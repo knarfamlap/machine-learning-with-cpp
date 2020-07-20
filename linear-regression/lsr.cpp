@@ -1,9 +1,10 @@
 #include "lsr.h"
+#include <iostream>
+#include <numeric>
 
 void simple_linear_regression::print(std::string message)
 {
-    if (verbose)
-        std::cout << message << "\n";
+    std::cout << message << "\n";
 }
 
 void simple_linear_regression::calculate_N()
@@ -32,8 +33,7 @@ void simple_linear_regression::x_square()
 /// Calculates X * y and stores in Xy
 void simple_linear_regression::x_cross_y()
 {
-    print("Calculating X * y");
-
+    print("Calculating X * y"); 
     for (int i = 0; i < N; i++)
     {
         Xy.push_back(X[i] * y[i]);
@@ -43,28 +43,16 @@ void simple_linear_regression::x_cross_y()
 void simple_linear_regression::calculate_sigma()
 {
     print("Calculating sum of X");
-    for (double i : X)
-    {
-        sigma_X += i;
-    }
+    sigma_X = std::accumulate(X.begin(), X.end(), 0.0);
 
     print("Calculating sum of y");
-    for (double i : y)
-    {
-        sigma_y += i;
-    }
+    sigma_y = std::accumulate(y.begin(), y.end(), 0.0);
 
     print("Calculating sum of XX");
-    for (double i : XX)
-    {
-        sigma_XX += i;
-    }
+    sigma_XX = std::accumulate(XX.begin(), XX.end(), 0.0);
 
     print("Calculating sum of Xy");
-    for (double i : Xy)
-    {
-        sigma_Xy += i;
-    }
+    sigma_Xy = std::accumulate(Xy.begin(), Xy.end(), 0.0);
 }
 
 // Calculate the value of m (slope/a_1)
@@ -77,18 +65,14 @@ void simple_linear_regression::calculate_slope()
 
 void simple_linear_regression::calculate_bias()
 {
-    print("Calculate a0 (bias or intercept");
+    print("Calculate a0 (bias or intercept)");
 
     b = (sigma_y - (m * sigma_X)) / N;
 }
 
 // constructor for training new model
-simple_linear_regression::simple_linear_regression(std::vector<double> X, std::vector<double> y, bool verbose)
-{
-    this->X = X;
-    this->y = y;
-    this->verbose = verbose;
-}
+// constructor for start training new model
+simple_linear_regression::simple_linear_regression(std::vector<double> X, std::vector<double> y) : X(X), y(y) {}
 
 void simple_linear_regression::train()
 {
@@ -107,4 +91,17 @@ void simple_linear_regression::train()
 double simple_linear_regression::predict(double _X)
 {
     return (m * _X) + b;
+}
+
+int main()
+{
+
+    std::vector<double> X = {2.0, 3.0, 5.0, 7.0, 9.0};
+    std::vector<double> y = {4.0, 5.0, 7.0, 10.0, 15.0};
+    simple_linear_regression slr(X, y);
+    slr.train();
+
+    std::cout << slr.predict(8.0);
+
+    return 0;
 }

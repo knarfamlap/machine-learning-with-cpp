@@ -10,18 +10,11 @@ class simple_linear_regression
 private:
 	int N = 0;
 
-public:
-	simple_linear_regression(std::vector<double> X, std::vector<double> y, bool verbose = false);
-	void train();
-	double predict(double _X);
-
 	std::vector<double> X;
 	std::vector<double> y;
 
 	std::vector<double> XX;
 	std::vector<double> Xy;
-
-	bool verbose;
 
 	double sigma_X = 0.0;
 	double sigma_y = 0.0;
@@ -47,4 +40,9 @@ public:
 	void calculate_slope();
 
 	void calculate_bias();
+
+public:
+	simple_linear_regression(std::vector<double> X, std::vector<double> y);
+	void train();
+	double predict(double _X);
 };
