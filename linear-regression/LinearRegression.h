@@ -5,7 +5,7 @@
 #include <sstream>
 #include <vector>
 
-class simple_linear_regression
+class LinearRegression
 {
 private:
 	int N = 0;
@@ -42,7 +42,7 @@ private:
 	void calculate_bias();
 
 public:
-	simple_linear_regression(std::vector<double> X, std::vector<double> y);
+	LinearRegression(std::vector<double> X, std::vector<double> y);
 	void train();
 	double predict(double _X);
 };
