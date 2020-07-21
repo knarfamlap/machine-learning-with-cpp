@@ -15,3 +15,6 @@ The goal is to implement the following:
 - [ ] Logistic Regression
 - [ ] Random Forest
 - [ ] K Nearest Neighbors
+
+### Authors
+* **@knarfamlap**
