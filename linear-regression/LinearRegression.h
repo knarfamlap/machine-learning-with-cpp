@@ -5,6 +5,8 @@
 #include <sstream>
 #include <vector>
 
+using namespace Eigen;
+
 class LinearRegression
 {
 private:
@@ -32,6 +34,9 @@ private:
 
 	void calculate_N();
 
+	MatrixXd reshapeX(MatrixXd X);
+	MatrixXd concatenateOnes(MatrixXd X);
+
 	void x_square();
 	void x_cross_y();
 
@@ -43,6 +48,9 @@ private:
 
 public:
 	LinearRegression(std::vector<double> X, std::vector<double> y);
-	void train();
+	LinearRegression();
+	std::vector<double> coefficients;
+	void fit(MatrixXd X, Matrix<double, Dynamic, 1> y);
 	double predict(double _X);
+	void train();
 };

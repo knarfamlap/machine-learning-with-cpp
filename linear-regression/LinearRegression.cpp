@@ -1,6 +1,9 @@
 #include "LinearRegression.h"
 #include <iostream>
 #include <numeric>
+#include <eigen/Eigen/Core>
+
+using namespace Eigen;
 
 void LinearRegression::print(std::string message)
 {
@@ -68,6 +71,44 @@ void LinearRegression::calculate_bias()
     print("Calculate a0 (bias or intercept)");
 
     b = (sigma_y - (m * sigma_X)) / N;
+}
+
+// makes the row vector into a column vector
+// should only be used if X has 1 column
+MatrixXd LinearRegression::reshapeX(MatrixXd X)
+{
+    // makes the row vector into a column vector
+    X.transposeInPlace();
+    return X;
+}
+
+// adds column vector of ones to the end of X
+MatrixXd LinearRegression::concatenateOnes(MatrixXd X)
+{
+    // create a column vector of 1s with row number from X
+    MatrixXd ones = MatrixXd::Ones(X.rows(), 1);
+    // adds 1 column placeholder to the right
+    X.conservativeResize(X.rows(), X.cols() + 1);
+    // assign the colum of ones to the end
+    X.col(X.cols() - 1) = ones;
+
+    return X;
+}
+
+void LinearRegression::fit(MatrixXd X, Matrix<double, Dynamic, 1> y)
+{
+    if (X.rows() == 1)
+    {
+        X = reshapeX(X); 
+    }
+
+    X = concatenateOnes(X); 
+    
+}
+
+LinearRegression::LinearRegression()
+{
+    coefficients = std::vector<double>();
 }
 
 // constructor for training new model
