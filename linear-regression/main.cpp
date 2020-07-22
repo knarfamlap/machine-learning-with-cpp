@@ -1,5 +1,5 @@
 #include <vector>
-#include <eigen/Eigen/Core>
+#include <eigen3/Eigen/Core>
 #include "LinearRegression.h"
 
 using namespace Eigen;
@@ -14,19 +14,12 @@ int main()
 
     // std::cout << slr.predict(15.0);
 
-    MatrixXd X  = MatrixXd::Random(5, 5); 
-    MatrixXd y = MatrixXd::Random(5, 1); 
-    X.transposeInPlace(); 
-    X.dot(X); 
-    
-      
+    MatrixXd X = MatrixXd::Random(5, 5);
+    MatrixXd y = MatrixXd::Random(5, 1);
+    X.transposeInPlace();
+    // MatrixXd res = X * X;
 
-    MatrixXd ones = MatrixXd::Ones(y.rows(), 1);
-    y.conservativeResize(y.rows(), y.cols() + 1); 
-    y.col(y.cols() - 1) = ones; 
+    std::cout << X << std::endl; 
 
-    std::cout << y << std::endl;
-
-    std::cout << y.cols() << std::endl;
     return 0;
 }

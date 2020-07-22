@@ -1,7 +1,7 @@
 #include "LinearRegression.h"
 #include <iostream>
 #include <numeric>
-#include <eigen/Eigen/Core>
+#include <eigen3/Eigen/Core>
 
 using namespace Eigen;
 
