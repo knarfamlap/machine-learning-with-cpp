@@ -12,18 +12,10 @@ Additionally, I hope to write a guide on how to do the implementation yourself s
 ## Goals :soccer:
 The goal is to implement the following: 
 
-- [X] Linear Regression
-    - [ ] Python
-    - [X] C++
-- [ ] Logistic Regression
-    - [ ] Python
-    - [ ] C++ 
+- [X] Linear Regression ([Python](/linear_models/linear-regression/python/linear_regression.ipynb)/C++)
+- [X] Logistic Regression ([Python](/linear_models/logistic-regression/python/logistic_regression.ipynb)/[C++]())
 - [ ] Random Forest
-    - [ ] Python
-    - [ ] C++
 - [ ] K Nearest Neighbors
-    - [ ] Python
-    - [ ] C++
 
 ### Authors
 * **@knarfamlap**
