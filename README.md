@@ -17,7 +17,7 @@ The goal is to implement the following:
 - [X] Logistic Regression ([Python](/linear_models/logistic-regression/python/logistic_regression.ipynb)/[C++]())
 - [X] Gaussian Discriminant Analysis - GDA ([Python](/linear_models/gda/python/gda.ipynb)/[C++]())
 - [x] Naive Bayes ([Python](/linear_models/naive-bayes/python/naive-bayes.ipynb)/[C++]())
-- [ ] Support Vector Machines(SVM) ([Python]()/C++)
+- [X] Support Vector Machines(SVM) ([Python](/linear_models/svm/svm.ipynb)/C++)
 - [ ] Random Forest
 - [ ] K Nearest Neighbors
 
